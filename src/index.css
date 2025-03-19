@@ -10,7 +10,11 @@
 
 @layer utilities {
   .header-height {
-    @apply h-14;
+    @apply h-12;
+  }
+
+  .layout-padding {
+    @apply py-16 px-4;
   }
 
   .flex-center {
