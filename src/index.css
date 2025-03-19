@@ -9,6 +9,13 @@
 }
 
 @layer utilities {
+  .header-height {
+    @apply h-14;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }
 
 @layer components {
