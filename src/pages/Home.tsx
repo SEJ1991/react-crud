@@ -1,4 +1,4 @@
-import { PageFrame } from '../shared/components';
+import { PageFrame } from '../shared';
 
 export function Home() {
   return (
