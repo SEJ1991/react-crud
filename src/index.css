@@ -9,6 +9,17 @@
 }
 
 @layer utilities {
+  .header-height {
+    @apply h-12;
+  }
+
+  .layout-padding {
+    @apply py-16 px-4;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }
 
 @layer components {
