@@ -23,4 +23,8 @@
 }
 
 @layer components {
+  .card {
+    @apply rounded-md p-4 mb-4 transition-transform cursor-pointer hover:-translate-y-1;
+    box-shadow: 0 0 15px 1px #d9dde2;
+  }
 }
