@@ -1,10 +1,5 @@
-import { Posts } from '../domain/post/components/Posts';
-import { PageFrame } from '../shared';
+import { PostsContainer } from '../domain/post';
 
 export function PostsPage() {
-  return (
-    <PageFrame>
-      <Posts />
-    </PageFrame>
-  );
+  return <PostsContainer />;
 }
