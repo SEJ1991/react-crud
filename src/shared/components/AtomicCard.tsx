@@ -18,7 +18,7 @@ export function AtomicCard(props: ComponentPropsWithoutRef<'div'>) {
 
 function Heading(props: ComponentPropsWithoutRef<'h3'>) {
   return (
-    <h3 {...props} className={twMerge('text-2xl font-semibold line-clamp-2', props.className)}>
+    <h3 {...props} className={twMerge('text-2xl font-semibold', props.className)}>
       {props.children}
     </h3>
   );
@@ -26,7 +26,7 @@ function Heading(props: ComponentPropsWithoutRef<'h3'>) {
 
 function Contents(props: ComponentPropsWithoutRef<'p'>) {
   return (
-    <p {...props} className={twMerge('line-clamp-3', props.className)}>
+    <p {...props} className={props.className}>
       {props.children}
     </p>
   );
