@@ -12,5 +12,5 @@ export function UsersContainer() {
   };
 
   if (isLoading) return <div>loading</div>;
-  return <Users />;
+  return <Users users={users} onClickDetail={handleClickDetail} />;
 }
