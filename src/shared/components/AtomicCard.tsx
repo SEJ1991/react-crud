@@ -1,4 +1,5 @@
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentProps, ComponentPropsWithoutRef } from 'react';
+import { Link } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 
 /**
@@ -36,16 +37,35 @@ function Button(props: ComponentPropsWithoutRef<'button'>) {
   return (
     <button
       {...props}
-      className={twMerge(
-        'text-right self-end cursor-pointer transition-colors ease-in-out duration-300 hover:underline hover:text-red-400',
-        props.className
-      )}
+      onClick={e => {
+        e.stopPropagation();
+        props.onClick?.(e);
+      }}
     >
       {props.children}
     </button>
   );
 }
 
+function AtomicLink(props: ComponentProps<typeof Link>) {
+  return (
+    <Link
+      {...props}
+      className={twMerge(
+        'transition-colors ease-in-out duration-300 hover:underline hover:text-red-400',
+        props.className
+      )}
+      onClick={e => {
+        e.stopPropagation();
+        props.onClick?.(e);
+      }}
+    >
+      {props.children}
+    </Link>
+  );
+}
+
 AtomicCard.Heading = Heading;
 AtomicCard.Contents = Contents;
 AtomicCard.Button = Button;
+AtomicCard.AtomicLink = AtomicLink;
