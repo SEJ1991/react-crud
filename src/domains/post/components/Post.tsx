@@ -1,4 +1,4 @@
-import { AtomicCard } from '../../../shared/components';
+import { AtomicCard } from '../../../shared';
 import { PostType } from '../types';
 
 interface Props {
