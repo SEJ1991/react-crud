@@ -1,12 +1,12 @@
 import { jpAxios } from '../../../shared';
-import { Post } from '../types';
+import { PostType } from '../types';
 
-export const getPosts = async (): Promise<Post[]> => {
+export const getPosts = async (): Promise<PostType[]> => {
   const response = await jpAxios.get('/posts');
   return response.data;
 };
 
-export const getPost = (id: string) => async (): Promise<Post> => {
+export const getPost = (id: string) => async (): Promise<PostType> => {
   const response = await jpAxios.get(`/posts/${id}`);
   return response.data;
 };

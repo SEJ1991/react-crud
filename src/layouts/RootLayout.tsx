@@ -24,4 +24,5 @@ export function RootLayout() {
 const ROUTERS = [
   { title: 'HOME', to: '/' },
   { title: 'POST', to: '/posts' },
+  { title: 'USER', to: '/users' },
 ];
