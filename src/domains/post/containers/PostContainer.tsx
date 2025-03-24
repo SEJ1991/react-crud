@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { PageFrame } from '../../../shared';
 import { getPost } from '../services/postService';
 import { useNavigate } from 'react-router';
+import Post from '../components/Post';
 
 interface Props {
   id?: string;
@@ -19,5 +19,5 @@ export function PostContainer({ id = '' }: Props) {
 
   if (isLoading) return <div>loading</div>;
   if (!post) return <div>undefined post, this id is {id}.</div>;
-  return <PageFrame>{id}</PageFrame>;
+  return <Post post={post} onClickBackBtn={handleClickBackBtn} />;
 }
