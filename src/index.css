@@ -6,6 +6,10 @@
     width: 100dvw;
     min-height: 100dvh;
   }
+
+  button {
+    @apply p-2 rounded-md border cursor-pointer;
+  }
 }
 
 @layer utilities {
