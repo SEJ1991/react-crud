@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import { getPosts } from '../services/postService';
-import { PageFrame } from '../../../shared';
 import Posts from '../components/Posts';
 
 export function PostsContainer() {
@@ -18,9 +17,5 @@ export function PostsContainer() {
   };
 
   if (isLoading) return <div>loading</div>;
-  return (
-    <PageFrame>
-      <Posts posts={posts} onClickDetail={handleClickDetail} onClickUser={handleClickUser} />
-    </PageFrame>
-  );
+  return <Posts posts={posts} onClickDetail={handleClickDetail} onClickUser={handleClickUser} />;
 }
