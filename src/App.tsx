@@ -20,6 +20,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path='posts' element={<PostsPage />} />
             <Route path='posts/:id' element={<PostPage />} />
+            <Route path='users' element={<PostPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
