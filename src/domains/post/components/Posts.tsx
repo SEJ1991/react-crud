@@ -1,8 +1,8 @@
 import { AtomicCard } from '../../../shared/components';
-import { Post } from '../types';
+import { PostType } from '../types';
 
 interface Props {
-  posts?: Post[];
+  posts?: PostType[];
   onClickDetail: (id: number) => () => void;
   onClickUser: (id: number) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

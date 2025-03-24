@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { PostContainer } from '../domains/post/containers/PostContainer';
+import { PostContainer, CommentsContainer } from '../domains/post';
 import { PageFrame } from '../shared';
 
 export function PostPage() {
@@ -7,6 +7,7 @@ export function PostPage() {
   return (
     <PageFrame>
       <PostContainer id={id} />
+      <CommentsContainer postId={id} />
     </PageFrame>
   );
 }
