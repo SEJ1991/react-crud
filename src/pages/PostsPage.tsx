@@ -1,5 +1,10 @@
 import { PostsContainer } from '../domains/post';
+import { PageFrame } from '../shared';
 
 export function PostsPage() {
-  return <PostsContainer />;
+  return (
+    <PageFrame>
+      <PostsContainer />
+    </PageFrame>
+  );
 }
