@@ -1,29 +1,29 @@
-interface Geo {
+interface GeoType {
   lat: string;
   lng: string;
 }
 
-interface Address {
+interface AddressType {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
-  geo: Geo;
+  geo: GeoType;
 }
 
-interface Company {
+interface CompanyType {
   name: string;
   catchPhrase: string;
   bs: string;
 }
 
-export interface User {
+export interface UserType {
   id: number;
   name: string;
   username: string;
   email: string;
-  address: Address;
+  address: AddressType;
   phone: string;
   website: string;
-  company: Company;
+  company: CompanyType;
 }
