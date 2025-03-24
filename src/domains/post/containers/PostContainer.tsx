@@ -9,7 +9,7 @@ interface Props {
 export function PostContainer({ id = '' }: Props) {
   const navigate = useNavigate();
   const { data: post, isLoading } = useQuery({
-    queryKey: ['post', id],
+    queryKey: ['posts', id],
     queryFn: getPost(id),
   });
 
