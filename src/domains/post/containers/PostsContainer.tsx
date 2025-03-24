@@ -11,11 +11,6 @@ export function PostsContainer() {
     navigate(`/posts/${id}`);
   };
 
-  const handleClickUser = (id: number) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation();
-    navigate(`/users/${id}`);
-  };
-
   if (isLoading) return <div>loading</div>;
-  return <Posts posts={posts} onClickDetail={handleClickDetail} onClickUser={handleClickUser} />;
+  return <Posts posts={posts} onClickDetail={handleClickDetail} />;
 }
