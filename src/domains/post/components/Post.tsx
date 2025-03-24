@@ -1,5 +1,5 @@
 import { AtomicCard } from '../../../shared/components';
-import { Post as PostType } from '../types';
+import { PostType } from '../types';
 
 interface Props {
   post: PostType;
