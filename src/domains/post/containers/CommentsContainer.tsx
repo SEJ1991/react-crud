@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPostComments } from '../services/commentService';
 import Comments from '../components/Comments';
-import { Error, Loading } from '../../../shared';
+import { CardLoading, Error } from '../../../shared';
 
 interface Props {
   postId?: string;
@@ -16,12 +16,7 @@ export function CommentsContainer({ postId = '' }: Props) {
     queryFn: getPostComments(postId),
   });
 
-  if (isLoading)
-    return (
-      <div className='card relative h-[250px]'>
-        <Loading />
-      </div>
-    );
+  if (isLoading) return <CardLoading className='h-30' />;
   if (isError) return <Error />;
   return <Comments comments={comments} />;
 }
