@@ -10,6 +10,10 @@
   button {
     @apply p-2 rounded-md border cursor-pointer;
   }
+
+  textarea {
+    @apply resize-none;
+  }
 }
 
 @layer utilities {
@@ -31,6 +35,10 @@
 
   .border-gray-shadow {
     box-shadow: 0 0 15px 1px #d9dde2;
+  }
+
+  .border-normal {
+    @apply px-2 py-1 text-lg rounded-md border border-gray-300;
   }
 }
 
