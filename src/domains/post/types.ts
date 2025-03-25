@@ -12,3 +12,9 @@ export interface CommentType {
   email: string;
   body: string;
 }
+
+export type PostFormType = {
+  title: string;
+  body: string;
+  userId: string | number;
+};
