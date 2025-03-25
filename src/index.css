@@ -28,6 +28,10 @@
   .hovering {
     @apply transition-transform hover:-translate-y-1;
   }
+
+  .border-gray-shadow {
+    box-shadow: 0 0 15px 1px #d9dde2;
+  }
 }
 
 @layer components {
