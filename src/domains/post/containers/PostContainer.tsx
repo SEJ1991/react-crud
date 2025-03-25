@@ -22,7 +22,7 @@ export function PostContainer({ id = '' }: Props) {
     navigate('/posts');
   };
 
-  if (isLoading) return <CardLoading />;
+  if (isLoading) return <CardLoading className='mb-4' />;
   if (!post || isError) return <Error needBackButtons />;
   return <Post post={post} onClickBackBtn={handleClickBackBtn} />;
 }
