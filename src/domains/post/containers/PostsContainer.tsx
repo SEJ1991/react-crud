@@ -17,7 +17,7 @@ export function PostsContainer() {
   return (
     <>
       <Posts posts={posts} onClickDetail={handleClickDetail} />;
-      <PlusButton className='fixed right-8 bottom-8 rounded-full z-10 bg-white hovering' />
+      <PlusButton className='size-15 fixed right-8 bottom-8 rounded-full z-10 bg-red-400 text-2xl text-white hovering' />
     </>
   );
 }
