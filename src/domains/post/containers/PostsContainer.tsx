@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import { getPosts } from '../services/postService';
 import Posts from '../components/Posts';
-import { Error } from '../../../shared';
+import { Error, Loading } from '../../../shared';
 
 export function PostsContainer() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export function PostsContainer() {
     navigate(`/posts/${id}`);
   };
 
-  if (isLoading) return <div>loading</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <Error needBackButtons />;
   return <Posts posts={posts} onClickDetail={handleClickDetail} />;
 }
