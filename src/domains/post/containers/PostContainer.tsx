@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getPost } from '../services/postService';
 import { useNavigate } from 'react-router';
 import Post from '../components/Post';
-import { Error } from '../../../shared';
+import { Error, Loading } from '../../../shared';
 
 interface Props {
   id?: string;
@@ -22,7 +22,12 @@ export function PostContainer({ id = '' }: Props) {
     navigate('/posts');
   };
 
-  if (isLoading) return <div>loading</div>;
+  if (isLoading)
+    return (
+      <div className='card relative h-[250px]'>
+        <Loading />
+      </div>
+    );
   if (!post || isError) return <Error needBackButtons />;
   return <Post post={post} onClickBackBtn={handleClickBackBtn} />;
 }
