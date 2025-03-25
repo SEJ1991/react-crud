@@ -12,12 +12,19 @@ export function PostsContainer() {
     navigate(`/posts/${id}`);
   };
 
+  const handleClickMoveForm = () => {
+    navigate('/posts/form');
+  };
+
   if (isLoading) return <Loading />;
   if (isError) return <Error needBackButtons />;
   return (
     <>
       <Posts posts={posts} onClickDetail={handleClickDetail} />;
-      <PlusButton className='size-15 fixed right-8 bottom-8 rounded-full z-10 bg-red-400 text-2xl text-white hovering' />
+      <PlusButton
+        className='size-15 fixed right-8 bottom-8 rounded-full z-10 bg-red-400 text-2xl text-white hovering'
+        onClick={handleClickMoveForm}
+      />
     </>
   );
 }

@@ -38,7 +38,11 @@
   }
 
   .border-normal {
-    @apply px-2 py-1 text-lg rounded-md border border-gray-300;
+    @apply px-2 py-1 text-base rounded-md border border-gray-300;
+  }
+
+  .border-required {
+    @apply px-2 py-1 text-base rounded-md border border-red-600;
   }
 }
 
