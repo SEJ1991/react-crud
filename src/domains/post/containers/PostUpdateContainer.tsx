@@ -1,0 +1,38 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import PostForm from '../components/PostForm';
+import { getUsers } from '../../user/services/userService';
+import { CardLoading, Error } from '../../../shared';
+import { useNavigate } from 'react-router';
+import { PostFormType } from '../types';
+import { toast } from 'sonner';
+
+interface Props {
+  id?: string;
+}
+export function PostUpdateContainer({ id = '' }: Props) {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const { data: users, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: getUsers });
+  // const { mutate } = useMutation({
+  //   mutationFn: createPost,
+  //   onSettled: (_, error) => {
+  //     if (error) {
+  //       toast.error('Failure');
+  //       return;
+  //     }
+
+  //     toast.success('Success');
+  //     queryClient.invalidateQueries({ queryKey: ['posts'] });
+  //     navigate('/posts', { replace: true });
+  //   },
+  // });
+
+  const handleSubmit = (data: PostFormType) => {};
+
+  const handleClickBackBtn = () => {};
+
+  if (isLoading) return <CardLoading />;
+  if (isError) return <Error needBackButtons />;
+  return <PostForm users={users} onClickBackBtn={handleClickBackBtn} onSubmit={handleSubmit} />;
+}
