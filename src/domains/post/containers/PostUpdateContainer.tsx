@@ -28,7 +28,7 @@ export function PostUpdateContainer({ id = '' }: Props) {
     enabled: !statePost,
   });
 
-  const { mutateAsync } = useMutation({
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: updatePost,
     onSettled: (newPost, error) => {
       if (!newPost || error) {
@@ -69,8 +69,10 @@ export function PostUpdateContainer({ id = '' }: Props) {
     <PostForm
       users={users}
       defaultValues={defaultValues}
+      isPending={isPending}
       onClickBackBtn={handleClickBackBtn}
       onSubmit={handleSubmit}
+      needDirtyFileds
     />
   );
 }
