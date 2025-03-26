@@ -24,17 +24,17 @@ export default function PostForm({ users = [], defaultValues, onClickBackBtn, on
         <legend className='text-2xl mb-4'>Post</legend>
         <input
           {...register('title', { required: true })}
-          className={`w-full sm:w-100 ${GET_BORDER(!!errors.title)}`}
+          className={`w-full sm:w-100 ${getBorder(!!errors.title)}`}
           placeholder='title'
         />
         <textarea
           {...register('body', { required: true })}
-          className={`w-full sm:w-125 md:w-175 ${GET_BORDER(!!errors.body)}`}
+          className={`w-full sm:w-125 md:w-175 ${getBorder(!!errors.body)}`}
           placeholder='body'
         />
         <select
           {...register('userId', { validate: value => Number(value) !== 0 })}
-          className={`w-full sm:w-100 ${GET_BORDER(!!errors.userId)}`}
+          className={`w-full sm:w-100 ${getBorder(!!errors.userId)}`}
         >
           <option disabled value='0'>
             users
@@ -47,8 +47,8 @@ export default function PostForm({ users = [], defaultValues, onClickBackBtn, on
         </select>
       </fieldset>
       <div className='flex gap-2'>
-        <button className='border-gray-400 hovering' onClick={onClickBackBtn}>
-          Back to list
+        <button type='button' className='border-gray-400 hovering' onClick={onClickBackBtn}>
+          Back
         </button>
         <button type='submit' className='bg-red-400 border-0 text-white hovering'>
           Submit
@@ -58,6 +58,6 @@ export default function PostForm({ users = [], defaultValues, onClickBackBtn, on
   );
 }
 
-function GET_BORDER(isRequired: boolean): string {
+function getBorder(isRequired: boolean): string {
   return isRequired ? 'border-required' : 'border-normal';
 }
