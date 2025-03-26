@@ -13,8 +13,8 @@ export interface CommentType {
   body: string;
 }
 
-export type PostFormType = {
-  title: string;
-  body: string;
-  userId: string | number;
-};
+export interface PostFormType {
+  title?: string;
+  body?: string;
+  userId?: string | number;
+}
