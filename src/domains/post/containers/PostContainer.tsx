@@ -11,6 +11,7 @@ interface Props {
 export function PostContainer({ id = '' }: Props) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
   const {
     data: post,
     isLoading,
@@ -40,7 +41,7 @@ export function PostContainer({ id = '' }: Props) {
   };
 
   const handleClickUpdateBtn = () => {
-    navigate(`/posts/${id}/update`);
+    navigate(`/posts/${id}/update`, { state: { post } });
   };
 
   const handleClickDeleteBtn = () => {
