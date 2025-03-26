@@ -12,7 +12,7 @@ export function PostFormContainer() {
   const queryClient = useQueryClient();
 
   const { data: users, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: getUsers });
-  const { mutate } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: createPost,
     onSettled: (_, error) => {
       if (error) {
@@ -40,6 +40,7 @@ export function PostFormContainer() {
     <PostForm
       users={users}
       defaultValues={DEFAULT_VALUES}
+      isPending={isPending}
       onClickBackBtn={handleClickBackBtn}
       onSubmit={handleSubmit}
     />
