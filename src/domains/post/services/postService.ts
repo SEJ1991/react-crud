@@ -11,7 +11,12 @@ export const getPost = (id: string) => async (): Promise<PostType> => {
   return response.data;
 };
 
-export const createPost = async (data: PostFormType): Promise<PostType[]> => {
+export const createPost = async (data: PostFormType) => {
   const response = await jpAxios.post('/posts', data);
+  return response.data;
+};
+
+export const deletePost = async (id: string) => {
+  const response = await jpAxios.delete(`/posts/${id}`);
   return response.data;
 };
