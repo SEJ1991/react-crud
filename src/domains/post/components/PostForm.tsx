@@ -5,9 +5,10 @@ import { PostFormType } from '../types';
 interface Props {
   users?: UserType[];
   defaultValues?: PostFormType;
+  onClickBackBtn: () => void;
   onSubmit: (data: PostFormType) => void;
 }
-export default function PostForm({ users = [], defaultValues, onSubmit }: Props) {
+export default function PostForm({ users = [], defaultValues, onClickBackBtn, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -45,9 +46,14 @@ export default function PostForm({ users = [], defaultValues, onSubmit }: Props)
           ))}
         </select>
       </fieldset>
-      <button type='submit' className='border-gray-400 hovering'>
-        Submit
-      </button>
+      <div className='flex gap-2'>
+        <button className='border-gray-400 hovering' onClick={onClickBackBtn}>
+          Back to list
+        </button>
+        <button type='submit' className='bg-red-400 border-0 text-white hovering'>
+          Submit
+        </button>
+      </div>
     </form>
   );
 }
