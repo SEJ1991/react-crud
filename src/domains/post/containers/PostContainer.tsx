@@ -39,7 +39,9 @@ export function PostContainer({ id = '' }: Props) {
     navigate('/posts');
   };
 
-  const handleClickUpdateBtn = () => {};
+  const handleClickUpdateBtn = () => {
+    navigate(`/posts/${id}/update`);
+  };
 
   const handleClickDeleteBtn = () => {
     toast.warning('Are you sure?', {
