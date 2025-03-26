@@ -1,32 +1,47 @@
+import { useForm } from 'react-hook-form';
 import { UserType } from '../../user/types';
+import { PostFormType } from '../types';
 
 interface Props {
-  users: UserType[];
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  users?: UserType[];
+  defaultValues?: PostFormType;
+  onSubmit: (data: PostFormType) => void;
 }
-export default function PostForm({ users, onSubmit }: Props) {
+export default function PostForm({ users = [], defaultValues, onSubmit }: Props) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<PostFormType>({ defaultValues });
+
   return (
     <form
       className='size-full card mb-4 flex-center flex-col gap-4'
-      onSubmit={e => {
-        e.preventDefault();
-        onSubmit(e);
-      }}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <fieldset className='size-full flex flex-col gap-4'>
         <legend className='text-2xl mb-4'>Post</legend>
-        <input name='title' className='w-full border-normal sm:w-100' placeholder='title' />
+        <input
+          {...register('title', { required: true })}
+          className={`w-full sm:w-100 ${GET_BORDER(!!errors.title)}`}
+          placeholder='title'
+        />
         <textarea
-          name='body'
-          className='w-full border-normal sm:w-125 md:w-175'
+          {...register('body', { required: true })}
+          className={`w-full sm:w-125 md:w-175 ${GET_BORDER(!!errors.body)}`}
           placeholder='body'
         />
-        <select name='userId' className='w-full border-normal sm:w-100'>
-          <option disabled value='none'>
+        <select
+          {...register('userId', { validate: value => Number(value) !== 0 })}
+          className={`w-full sm:w-100 ${GET_BORDER(!!errors.userId)}`}
+        >
+          <option disabled value='0'>
             users
           </option>
           {users.map(({ id, name }) => (
-            <option value={id}>{name}</option>
+            <option key={id} value={id}>
+              {name} ({id})
+            </option>
           ))}
         </select>
       </fieldset>
@@ -35,4 +50,8 @@ export default function PostForm({ users, onSubmit }: Props) {
       </button>
     </form>
   );
+}
+
+function GET_BORDER(isRequired: boolean): string {
+  return isRequired ? 'border-required' : 'border-normal';
 }
