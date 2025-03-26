@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { RootLayout } from './layouts/RootLayout';
 import { Home, PostsPage, PostPage, UsersPage, UserPage, PostFormPage } from './pages';
+import { Toaster } from 'sonner';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,6 +15,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster richColors position='top-center' />
       <BrowserRouter>
         <Routes>
           <Route element={<RootLayout />}>
