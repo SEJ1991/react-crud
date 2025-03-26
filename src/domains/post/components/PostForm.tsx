@@ -106,9 +106,9 @@ interface FormRowProps extends ComponentPropsWithoutRef<'div'> {
 }
 function FormRow({ errMsg, ...props }: FormRowProps) {
   return (
-    <div {...props} className={twMerge('flex flex-col gap-1 animate-pulse', props.className)}>
+    <div {...props} className={twMerge('flex flex-col gap-1', props.className)}>
       {props.children}
-      {errMsg && <span className='text-red-400'>{errMsg} ⤴️</span>}
+      {errMsg && <span className='text-red-400 animate-pulse'>{errMsg} ⤴️</span>}
     </div>
   );
 }
