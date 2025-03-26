@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import PostForm from '../components/PostForm';
 import { getUsers } from '../../user/services/userService';
 import { CardLoading, Error } from '../../../shared';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { PostFormType, PostType } from '../types';
 import { toast } from 'sonner';
 import { getPost, updatePost } from '../services/postService';
@@ -13,19 +13,16 @@ interface Props {
 export function PostUpdateContainer({ id = '' }: Props) {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const location = useLocation();
-  const statePost: PostType | undefined = location.state?.post;
 
   const { data: users, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: getUsers });
 
   const {
-    data: fallbackPost,
+    data: post,
     isLoading: isGetPostLoading,
     isError: isGetPostError,
   } = useQuery({
     queryKey: ['posts', id],
     queryFn: getPost(id),
-    enabled: !statePost,
   });
 
   const { isPending, mutateAsync } = useMutation({
@@ -38,11 +35,9 @@ export function PostUpdateContainer({ id = '' }: Props) {
       toast.success('Success');
       queryClient.invalidateQueries({ queryKey: ['posts'] });
       queryClient.invalidateQueries({ queryKey: ['posts', id] });
-      navigate(`/posts/${id}`, { state: { post: newPost } });
+      navigate(`/posts/${id}`);
     },
   });
-
-  const post = statePost ?? fallbackPost;
 
   const handleSubmit = (data: PostFormType) => {
     toast.warning('Are you sure?', {
@@ -58,7 +53,7 @@ export function PostUpdateContainer({ id = '' }: Props) {
   };
 
   const handleClickBackBtn = () => {
-    navigate(`/posts/${id}`, { state: { post } });
+    navigate(`/posts/${id}`);
   };
 
   if (isLoading || isGetPostLoading) return <CardLoading />;
