@@ -41,7 +41,7 @@ export function PostContainer({ id = '' }: Props) {
   };
 
   const handleClickUpdateBtn = () => {
-    navigate(`/posts/${id}/update`, { state: { post } });
+    navigate(`/posts/${id}/update`);
   };
 
   const handleClickDeleteBtn = () => {
