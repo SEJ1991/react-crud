@@ -30,9 +30,20 @@ export function PostFormContainer() {
     mutate({ ...data, userId: Number(data.userId) });
   };
 
+  const handleClickBackBtn = () => {
+    navigate('/posts');
+  };
+
   if (isLoading) return <CardLoading />;
   if (isError) return <Error needBackButtons />;
-  return <PostForm users={users} onSubmit={handleSubmit} defaultValues={DEFAULT_VALUES} />;
+  return (
+    <PostForm
+      users={users}
+      defaultValues={DEFAULT_VALUES}
+      onClickBackBtn={handleClickBackBtn}
+      onSubmit={handleSubmit}
+    />
+  );
 }
 
 const DEFAULT_VALUES = {
