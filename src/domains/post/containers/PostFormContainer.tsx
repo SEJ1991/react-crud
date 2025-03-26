@@ -12,7 +12,7 @@ export function PostFormContainer() {
   const queryClient = useQueryClient();
 
   const { data: users, isLoading, isError } = useQuery({ queryKey: ['users'], queryFn: getUsers });
-  const { isPending, mutate } = useMutation({
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: createPost,
     onSettled: (_, error) => {
       if (error) {
@@ -27,7 +27,16 @@ export function PostFormContainer() {
   });
 
   const handleSubmit = (data: PostFormType) => {
-    mutate({ ...data, userId: Number(data.userId) });
+    toast.message('Are you sure?', {
+      action: {
+        label: 'Post',
+        onClick: () => {
+          toast.promise(mutateAsync({ ...data, userId: Number(data.userId) }), {
+            loading: 'Posting...',
+          });
+        },
+      },
+    });
   };
 
   const handleClickBackBtn = () => {
