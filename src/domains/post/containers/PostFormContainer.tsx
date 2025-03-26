@@ -5,6 +5,7 @@ import { CardLoading, Error } from '../../../shared';
 import { createPost } from '../services/postService';
 import { useNavigate } from 'react-router';
 import { PostFormType } from '../types';
+import { toast } from 'sonner';
 
 export function PostFormContainer() {
   const navigate = useNavigate();
@@ -15,9 +16,11 @@ export function PostFormContainer() {
     mutationFn: createPost,
     onSettled: (_, error) => {
       if (error) {
+        toast.error('Failure');
         return;
       }
 
+      toast.success('Success');
       queryClient.invalidateQueries({ queryKey: ['posts'] });
       navigate('/posts', { replace: true });
     },
