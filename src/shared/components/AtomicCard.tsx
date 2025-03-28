@@ -34,20 +34,24 @@ function Contents(props: ComponentPropsWithoutRef<'p'>) {
 }
 
 function Button(props: ComponentPropsWithoutRef<'button'>) {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    props.onClick?.(e);
+  };
+
   return (
-    <button
-      {...props}
-      onClick={e => {
-        e.stopPropagation();
-        props.onClick?.(e);
-      }}
-    >
+    <button {...props} onClick={handleClick}>
       {props.children}
     </button>
   );
 }
 
 function AtomicLink(props: ComponentProps<typeof Link>) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.stopPropagation();
+    props.onClick?.(e);
+  };
+
   return (
     <Link
       {...props}
@@ -55,10 +59,7 @@ function AtomicLink(props: ComponentProps<typeof Link>) {
         'transition-colors ease-in-out duration-300 hover:underline hover:text-red-400',
         props.className
       )}
-      onClick={e => {
-        e.stopPropagation();
-        props.onClick?.(e);
-      }}
+      onClick={handleClick}
     >
       {props.children}
     </Link>
