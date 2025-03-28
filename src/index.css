@@ -8,7 +8,7 @@
   }
 
   button {
-    @apply p-2 rounded-md border cursor-pointer;
+    @apply p-2 rounded-md border cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   textarea {
